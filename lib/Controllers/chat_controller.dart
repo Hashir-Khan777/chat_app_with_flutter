@@ -5,7 +5,12 @@ class ChatController extends GetxController {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   var messages = [].obs;
 
-  // void fetchMessages() {}
+  void fetchMessages(uniqueId) {
+    firestore.collection('Chats/$uniqueId/messages').get().then((value) {
+      messages.value = value.docs.map((e) => e.data()).toList();
+    });
+  }
+
   void sendMessage(message, myId, userId, uniqueId) {
     var docId = firestore.collection('Chats').doc().id;
     messages.add({
