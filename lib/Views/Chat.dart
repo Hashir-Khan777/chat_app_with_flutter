@@ -49,8 +49,14 @@ class _ChatState extends State<Chat> {
                       itemCount: controller.messages.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(
-                            controller.messages[index]['message'],
+                          title: Align(
+                            alignment: controller.messages[index]['sender'] ==
+                                    '${widget.myData['_id']}'
+                                ? Alignment.centerLeft
+                                : Alignment.centerRight,
+                            child: Text(
+                              controller.messages[index]['message'],
+                            ),
                           ),
                         );
                       },
