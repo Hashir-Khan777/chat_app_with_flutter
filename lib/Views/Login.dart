@@ -147,11 +147,15 @@ class _LoginState extends State<Login> {
                         Text('OR'),
                         SignInButton(
                           Buttons.Google,
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.signInWithGoogle();
+                          },
                         ),
                         SignInButton(
                           Buttons.Facebook,
-                          onPressed: () {},
+                          onPressed: () {
+                            controller.signInWithFacebook();
+                          },
                         ),
                       ],
                     ),
